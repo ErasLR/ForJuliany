@@ -1,0 +1,999 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at top, #35122f, #100010 55%, #050005);
+
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =================================
+   ESTRELLAS
+================================= */
+
+#stars {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    background: white;
+    border-radius: 50%;
+
+    opacity: .7;
+
+    animation: parpadear 3s infinite alternate;
+}
+
+@keyframes parpadear {
+
+    from {
+        opacity: .2;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =================================
+   PÁGINAS
+================================= */
+
+.pagina {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100dvh;
+
+    top: 0;
+    left: 0;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateX(100px) scale(.98);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        visibility .8s;
+
+    z-index: 2;
+
+    overflow: hidden;
+}
+
+
+.pagina.activa {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateX(0) scale(1);
+
+}
+
+
+/* =================================
+   INICIO
+================================= */
+
+.contenido-inicio {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 500px;
+}
+
+
+.corazon {
+
+    font-size: 80px;
+
+    animation:
+        latido 1.5s infinite,
+        flotar 3s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 0 20px #ff2b91);
+
+}
+
+
+@keyframes latido {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+
+}
+
+
+@keyframes flotar {
+
+    0%, 100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -15px;
+    }
+
+}
+
+
+h1 {
+
+    font-size: clamp(40px, 10vw, 70px);
+
+    margin: 10px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff69b4,
+            #ffffff,
+            #ff3f9f
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+}
+
+
+.subtitulo {
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    color: #ffd6ec;
+
+}
+
+
+/* =================================
+   BOTONES
+================================= */
+
+.boton {
+
+    margin-top: 30px;
+
+    padding: 15px 35px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2990,
+            #ff5db0
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(255, 41, 144, .6),
+        0 8px 30px rgba(0, 0, 0, .4);
+
+    transition: .3s;
+
+}
+
+
+.boton:hover {
+
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 30px rgba(255, 41, 144, .9);
+
+}
+
+
+.boton:active {
+
+    transform: scale(.95);
+
+}
+
+
+/* =================================
+   TÍTULOS
+================================= */
+
+.titulo-seccion {
+
+    position: absolute;
+
+    top: 7%;
+
+    width: 90%;
+
+}
+
+
+.titulo-seccion span {
+
+    font-size: 30px;
+
+}
+
+
+.titulo-seccion h2 {
+
+    font-size: clamp(28px, 7vw, 45px);
+
+    margin: 5px;
+
+    color: #ff7abd;
+
+}
+
+
+.titulo-seccion p {
+
+    color: #e8c9dc;
+
+}
+
+
+/* =================================
+   ÓRBITA HORIZONTAL
+================================= */
+
+.orbita {
+
+    position: relative;
+
+    width: min(900px, 100vw);
+
+    height: 380px;
+
+    margin-top: 30px;
+
+    perspective: 1000px;
+
+    transform-style: preserve-3d;
+
+}
+
+
+/*
+   ANILLOS VISUALES
+*/
+
+.anillo {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 80%;
+    height: 180px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(65deg);
+
+    border:
+
+        2px solid rgba(255, 105, 180, .45);
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 15px rgba(255, 50, 150, .25),
+        inset 0 0 20px rgba(255, 50, 150, .1);
+
+    animation:
+        brilloOrbita 3s infinite alternate;
+
+}
+
+
+.anillo::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border:
+
+        1px solid rgba(255, 255, 255, .15);
+
+    border-radius: 50%;
+
+}
+
+
+@keyframes brilloOrbita {
+
+    from {
+        opacity: .35;
+        transform:
+            translate(-50%, -50%)
+            rotateX(65deg)
+            scale(.98);
+    }
+
+    to {
+        opacity: .8;
+        transform:
+            translate(-50%, -50%)
+            rotateX(65deg)
+            scale(1.02);
+    }
+
+}
+
+
+/* =================================
+   FOTOS DE LA ÓRBITA
+================================= */
+
+.foto {
+
+    position: absolute;
+
+    width: 115px;
+    height: 150px;
+
+    left: 50%;
+    top: 50%;
+
+    margin-left: -57px;
+    margin-top: -75px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 3px solid rgba(255, 255, 255, .8);
+
+    box-shadow:
+
+        0 0 20px rgba(255, 50, 150, .5);
+
+    background: #1b0718;
+
+    transform-style: preserve-3d;
+
+}
+
+
+/*
+   POSICIONES HORIZONTALES
+*/
+
+.foto1 {
+
+    transform:
+        translateX(-310px)
+        translateZ(-40px)
+        scale(.72);
+
+    opacity: .55;
+
+}
+
+
+.foto2 {
+
+    transform:
+        translateX(-180px)
+        translateZ(20px)
+        scale(.86);
+
+    opacity: .8;
+
+}
+
+
+.foto3 {
+
+    transform:
+        translateX(0)
+        translateZ(100px)
+        scale(1.08);
+
+    z-index: 5;
+
+}
+
+
+.foto4 {
+
+    transform:
+        translateX(180px)
+        translateZ(20px)
+        scale(.86);
+
+    opacity: .8;
+
+}
+
+
+.foto5 {
+
+    transform:
+        translateX(310px)
+        translateZ(-40px)
+        scale(.72);
+
+    opacity: .55;
+
+}
+
+
+.foto img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/*
+   MOVIMIENTO LENTO
+*/
+
+.foto1 {
+    animation: orbita1 18s infinite ease-in-out;
+}
+
+.foto2 {
+    animation: orbita2 18s infinite ease-in-out;
+}
+
+.foto3 {
+    animation: orbita3 18s infinite ease-in-out;
+}
+
+.foto4 {
+    animation: orbita4 18s infinite ease-in-out;
+}
+
+.foto5 {
+    animation: orbita5 18s infinite ease-in-out;
+}
+
+
+@keyframes orbita1 {
+
+    0%, 100% {
+        transform:
+            translateX(-310px)
+            translateZ(-40px)
+            scale(.72);
+    }
+
+    50% {
+        transform:
+            translateX(-220px)
+            translateZ(30px)
+            scale(.88);
+    }
+
+}
+
+
+@keyframes orbita2 {
+
+    0%, 100% {
+        transform:
+            translateX(-180px)
+            translateZ(20px)
+            scale(.86);
+    }
+
+    50% {
+        transform:
+            translateX(-60px)
+            translateZ(100px)
+            scale(1);
+    }
+
+}
+
+
+@keyframes orbita3 {
+
+    0%, 100% {
+        transform:
+            translateX(0)
+            translateZ(100px)
+            scale(1.08);
+    }
+
+    50% {
+        transform:
+            translateX(170px)
+            translateZ(20px)
+            scale(.86);
+    }
+
+}
+
+
+@keyframes orbita4 {
+
+    0%, 100% {
+        transform:
+            translateX(180px)
+            translateZ(20px)
+            scale(.86);
+    }
+
+    50% {
+        transform:
+            translateX(310px)
+            translateZ(-40px)
+            scale(.72);
+    }
+
+}
+
+
+@keyframes orbita5 {
+
+    0%, 100% {
+        transform:
+            translateX(310px)
+            translateZ(-40px)
+            scale(.72);
+    }
+
+    50% {
+        transform:
+            translateX(120px)
+            translateZ(80px)
+            scale(.95);
+    }
+
+}
+
+
+.texto-orbita {
+
+    margin-top: -15px;
+
+    color: #e7bfd5;
+
+    font-size: 14px;
+
+}
+
+
+/* =================================
+   CARTA
+================================= */
+
+.carta {
+
+    width: min(600px, 92vw);
+
+    max-height: 70vh;
+
+    overflow-y: auto;
+
+    padding: 30px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, .07);
+
+    border:
+        1px solid rgba(255, 105, 180, .35);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 0 40px rgba(255, 20, 130, .15);
+
+}
+
+
+.sobre {
+
+    font-size: 60px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.carta h2 {
+
+    color: #ff72b8;
+
+    margin-bottom: 20px;
+
+    font-size: 30px;
+
+}
+
+
+.carta p {
+
+    color: #f2dce8;
+
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+
+}
+
+
+.firma {
+
+    color: white !important;
+
+    margin-top: 25px;
+
+}
+
+
+/* =================================
+   GALERÍA
+================================= */
+
+.galeria {
+
+    width: min(700px, 95vw);
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-top: 50px;
+
+}
+
+
+.tarjeta {
+
+    position: relative;
+
+    height: 170px;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 2px solid rgba(255, 105, 180, .5);
+
+    box-shadow:
+        0 0 20px rgba(255, 40, 150, .2);
+
+    transition: .4s;
+
+}
+
+
+.tarjeta:hover {
+
+    transform: scale(1.04) rotate(1deg);
+
+}
+
+
+.tarjeta img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.tarjeta span {
+
+    position: absolute;
+
+    bottom: 8px;
+    right: 10px;
+
+    font-size: 22px;
+
+}
+
+
+/* =================================
+   FINAL
+================================= */
+
+.final {
+
+    width: min(600px, 90vw);
+
+}
+
+
+.gran-corazon {
+
+    font-size: 110px;
+
+    animation: latido 1.5s infinite;
+
+    filter:
+        drop-shadow(0 0 30px #ff1493);
+
+}
+
+
+.final h1 {
+
+    font-size: clamp(40px, 10vw, 65px);
+
+}
+
+
+.final h2 {
+
+    color: #ff7aba;
+
+    font-size: 30px;
+
+}
+
+
+.final p {
+
+    color: #efd8e5;
+
+    line-height: 1.7;
+
+    margin-top: 20px;
+
+}
+
+
+.corazones {
+
+    font-size: 30px;
+
+    margin-top: 25px;
+
+}
+
+
+.final-texto {
+
+    font-size: 18px;
+
+}
+
+
+/* =================================
+   CELULAR
+================================= */
+
+@media (max-width: 600px) {
+
+    .pagina {
+
+        padding: 18px;
+
+    }
+
+
+    .corazon {
+
+        font-size: 65px;
+
+    }
+
+
+    .orbita {
+
+        width: 100vw;
+
+        height: 320px;
+
+        transform: scale(.75);
+
+        margin-top: 30px;
+
+    }
+
+
+    .anillo {
+
+        width: 95%;
+
+    }
+
+
+    .foto {
+
+        width: 105px;
+        height: 140px;
+
+        margin-left: -52px;
+        margin-top: -70px;
+
+    }
+
+
+    .foto1 {
+
+        transform:
+            translateX(-270px)
+            translateZ(-40px)
+            scale(.65);
+
+    }
+
+
+    .foto2 {
+
+        transform:
+            translateX(-150px)
+            translateZ(20px)
+            scale(.78);
+
+    }
+
+
+    .foto3 {
+
+        transform:
+            translateX(0)
+            translateZ(100px)
+            scale(1);
+
+    }
+
+
+    .foto4 {
+
+        transform:
+            translateX(150px)
+            translateZ(20px)
+            scale(.78);
+
+    }
+
+
+    .foto5 {
+
+        transform:
+            translateX(270px)
+            translateZ(-40px)
+            scale(.65);
+
+    }
+
+
+    .galeria {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 10px;
+
+        margin-top: 30px;
+
+    }
+
+
+    .tarjeta {
+
+        height: 145px;
+
+    }
+
+
+    .carta {
+
+        padding: 24px;
+
+        max-height: 65vh;
+
+    }
+
+}
+
+
+/* CELULARES MUY PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+    .orbita {
+
+        transform: scale(.62);
+
+    }
+
+
+    .titulo-seccion {
+
+        top: 5%;
+
+    }
+
+
+    .titulo-seccion h2 {
+
+        font-size: 26px;
+
+    }
+
+
+    .boton {
+
+        padding: 13px 28px;
+
+        font-size: 15px;
+
+    }
+
+}
