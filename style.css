@@ -1099,3 +1099,39 @@ img {
         height: 65px;
     }
 }
+/* CELULAR VERTICAL */
+@media (max-width: 600px) and (orientation: portrait) {
+
+    .pagina {
+        min-height: 100svh;
+        width: 100%;
+        padding: 20px 15px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .orbita {
+        width: 85vw;
+        height: 85vw;
+        max-width: 360px;
+        max-height: 360px;
+    }
+
+    .foto {
+        width: 65px;
+        height: 65px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+}
