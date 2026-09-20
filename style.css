@@ -997,3 +997,105 @@ h1 {
     }
 
 }
+/* ================================
+   ADAPTACIÓN PARA CELULARES
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+.pagina {
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 20px;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    .pagina {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 10vw, 4rem);
+        text-align: center;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 7vw, 3rem);
+        text-align: center;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .boton {
+        width: 90%;
+        max-width: 320px;
+        min-height: 50px;
+    }
+
+    .carta {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .contenido-inicio {
+        width: 100%;
+    }
+
+    .orbita {
+        width: 90vw;
+        height: 90vw;
+        max-width: 430px;
+        max-height: 430px;
+    }
+
+    .foto {
+        width: 18vw;
+        height: 18vw;
+        max-width: 90px;
+        max-height: 90px;
+    }
+}
+
+
+/* CELULAR HORIZONTAL */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+    .pagina {
+        min-height: 100svh;
+        padding: 15px;
+    }
+
+    .orbita {
+        width: 55vh;
+        height: 55vh;
+    }
+
+    .foto {
+        width: 65px;
+        height: 65px;
+    }
+}
